@@ -16,6 +16,7 @@ public class RoofCategories {
     private WebDriver driver;
     @FindBy(xpath = "//h2[contains(@class, 'main-title full')] ")
     private WebElement categoryTitle;
+    String s;
 
     @FindBy(xpath = "//div[contains(@class, 'category-page-wrapper')] ")
     private WebElement categoryList;
