@@ -33,8 +33,7 @@ public class ThenForRoof {
     @Then("get the specifications of the product")
     public void specificationsOfProduct(String spfName){
         commonActions.scrollToElement(roofProducts.getSpecifications());
-        roofProducts.getSpecificationsByName(spfName);
+//        roofProducts.getSpecificationsByName(spfName);
         System.out.println(roofProducts.getSpecificationsTable());
-
     }
 }
