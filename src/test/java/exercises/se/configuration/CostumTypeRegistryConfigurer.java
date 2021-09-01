@@ -5,13 +5,12 @@ package exercises.se.configuration;
 import cucumber.api.TypeRegistry;
 import cucumber.runtime.DefaultTypeRegistryConfiguration;
 
-import exercises.se.data.DatatableClass;
+import exercises.se.data.MovieDescriptionData;
 import exercises.se.data.User;
 import io.cucumber.datatable.DataTableType;
 import io.cucumber.datatable.TableEntryTransformer;
 
 import java.util.Locale;
-import java.util.Map;
 
 
 public class CostumTypeRegistryConfigurer  extends DefaultTypeRegistryConfiguration {
@@ -35,6 +34,15 @@ public class CostumTypeRegistryConfigurer  extends DefaultTypeRegistryConfigurat
                     user.setPassword(dataRow.get("password"));
 
                     return user;
+                });
+    }
+    private DataTableType defineMoviesDescriptions(){
+        return new DataTableType(MovieDescriptionData.class,
+                (TableEntryTransformer<MovieDescriptionData>) dataRow-> {
+                    MovieDescriptionData movieDescriptionData = new MovieDescriptionData();
+                    movieDescriptionData.setInfoTitle(dataRow.get("infoTitle"));
+                    movieDescriptionData.setInfo(dataRow.get("info"));
+                    return  movieDescriptionData;
                 });
     }
 //        DataTableType tableType = new DataTableType(DatatableClass.class, transformer);

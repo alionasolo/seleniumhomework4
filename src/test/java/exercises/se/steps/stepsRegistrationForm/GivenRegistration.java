@@ -8,6 +8,7 @@ import exercises.se.browser.Driver;
 public class GivenRegistration {
     @Given("user access {string} page")
     public void userIsOnPage(String str){
+        Driver.runDriver();
         Driver.getDriver().get(str);
     }
 
