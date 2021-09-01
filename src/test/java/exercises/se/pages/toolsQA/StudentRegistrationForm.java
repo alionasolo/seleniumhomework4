@@ -2,6 +2,7 @@ package exercises.se.pages.toolsQA;
 
 import exercises.se.browser.Driver;
 import lombok.Data;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,8 +47,9 @@ public class StudentRegistrationForm {
     @FindBy(xpath = "//select[contains(@class, 'react-datepicker__year-select')]")
     private WebElement year;
 
-    @FindBy(xpath = "//div[contains(@class, 'react-datepicker__week')]")
-    private WebElement date;
+    @FindBy(xpath = "//div[contains(@class, 'react-datepicker__mounth')]")
+    private List<WebElement> listOfdate;
+
 
     @FindBy(xpath = "//input[contains(@id, 'subjectsInput')]")
     private WebElement subj;
@@ -70,6 +72,18 @@ public class StudentRegistrationForm {
     public StudentRegistrationForm(WebDriver webdriver) {
         this.driver = webdriver;
         PageFactory.initElements(webdriver, this);
+    }
+
+    public List<WebElement> getMenuItems(){
+        return listOfdate;
+    }
+
+
+    public WebElement getMenuItemByName(String menuItemName){
+        return getMenuItems().stream()//punem in declarare list <WebElement> si nu plasam find element dar element-> element . equals...
+                .filter(element -> element.getText().equals(menuItemName))
+                .findFirst()
+                .orElseThrow(()-> new RuntimeException("Such menu item does not exists - " + menuItemName));
     }
 
     public WebElement getGenderRadiobutton(String radiobut) {

@@ -33,8 +33,8 @@ public class WhenRegistration {
         Select selectYear = new Select(studentRegistrationForm.getYear());
         selectYear.selectByValue("1998");
 
-        Select selectDate = new Select(studentRegistrationForm.getDate());
-        selectDate.selectByIndex(8);
+//        Select selectDate = new Select(studentRegistrationForm.getListOfdate());
+//        selectDate.selectByIndex(8);
 
         studentRegistrationForm.getSubj().sendKeys(values.get(5));
         studentRegistrationForm.getHobbiesCheckbox(values.get(5)).click();
